@@ -1,5 +1,6 @@
 from decimal import Decimal
 import os
+import platform
 
 
 ENVIRONMENTS = { 
@@ -18,8 +19,8 @@ ENVIRONMENTS = {
 CSV_DATA_DIR = os.environ.get('QSFOREX_CSV_DATA_DIR', None)
 OUTPUT_RESULTS_DIR = os.environ.get('QSFOREX_OUTPUT_RESULTS_DIR', None)
 
-CSV_DATA_DIR = "../TradeData"
-OUTPUT_RESULTS_DIR = "../Result"
+CSV_DATA_DIR = "..\TradeData" if platform.system()  == "Windows" else "../TradeData"
+OUTPUT_RESULTS_DIR = "..\Result" if platform.system()  == "Windows" else "../Result"
 
 DOMAIN = "practice"
 STREAM_DOMAIN = ENVIRONMENTS["streaming"][DOMAIN]
